@@ -60,7 +60,7 @@ func main() {
 		off_x := 2 * marginX - 2 * innerMarginX
 		off_y := 2 * marginY - 2 * innerMarginY
 
-		rec := rl.NewRectangle(start.X - innerMarginX, start.Y - innerMarginY, windowWidth - off_x, windowHeight - off_y)
+		rec := rl.NewRectangle(marginX - innerMarginX, 1.5 * marginY - innerMarginY, windowWidth - off_x, windowHeight - off_y)
 		rl.DrawRectangleLinesEx(rec, 0.75 * lwd, rl.Gray)
 
 		rl.DrawText(text, text_x, text_y, fsz, rl.Black);
