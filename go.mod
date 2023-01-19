@@ -1,4 +1,4 @@
-module plot_rl
+module github.com/rheactive/raylib-go_example_resize
 
 go 1.19
 

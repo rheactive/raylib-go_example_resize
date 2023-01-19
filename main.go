@@ -3,35 +3,35 @@ package main
 import "github.com/gen2brain/raylib-go/raylib"
 
 func main() {
-	var window_width float32 = 1600
-	var window_height float32 = 900
-	var scale_x float32 = 1
-	var scale_y float32 = 1
-	var margin_x float32 = 0.05 * window_width
-	var margin_y float32 = 0.1 * window_height
+	var windowWidth float32 = 1600
+	var windowHeight float32 = 900
+	var scaleX float32 = 1
+	var scaleY float32 = 1
+	var marginX float32 = 0.05 * windowWidth
+	var marginY float32 = 0.1 * windowHeight
 
 	rl.SetConfigFlags(rl.FlagWindowResizable)
-	rl.InitWindow(int32(window_width), int32(window_height), "Raylib example - window resize")
+	rl.InitWindow(int32(windowWidth), int32(windowHeight), "Raylib example - window resize")
 	
 	rl.SetTargetFPS(60)
 
-	var start rl.Vector2 = rl.NewVector2(margin_x, 1.5 * margin_y);
-    var end rl.Vector2 = rl.NewVector2(window_width - margin_x, window_height - 0.5 * margin_y);
+	var start rl.Vector2 = rl.NewVector2(marginX, 1.5 * marginY);
+    var end rl.Vector2 = rl.NewVector2(windowWidth - marginX, windowHeight - 0.5 * marginY);
 
 	for !rl.WindowShouldClose() {
 		// Update
 		if rl.IsWindowResized() || rl.IsWindowMaximized() {
-			scale_x = float32(rl.GetScreenWidth())/window_width
-			scale_y = float32(rl.GetScreenHeight())/window_height
-			window_width = float32(rl.GetScreenWidth())
-			window_height = float32(rl.GetScreenHeight())
-			margin_x *= scale_x
-			margin_y *= scale_y
+			scaleX = float32(rl.GetScreenWidth())/windowWidth
+			scaleY = float32(rl.GetScreenHeight())/windowHeight
+			windowWidth = float32(rl.GetScreenWidth())
+			windowHeight = float32(rl.GetScreenHeight())
+			marginX *= scaleX
+			marginY *= scaleY
 
-			start.X *= scale_x
-			start.Y *= scale_y
-			end.X *= scale_x
-			end.Y *= scale_y
+			start.X *= scaleX
+			start.Y *= scaleY
+			end.X *= scaleX
+			end.Y *= scaleY
 		}
         //----------------------------------------------------------------------------------
         if rl.IsMouseButtonDown(rl.MouseLeftButton) {
@@ -50,17 +50,17 @@ func main() {
 
 		text := "USE MOUSE LEFT-RIGHT CLICK to DEFINE LINE START and END POINTS"
 
-		fsz := int32(0.02 * window_width)
-		text_x := (int32(window_width) - rl.MeasureText(text, fsz))/2
-		text_y := int32(0.05 * window_height)
+		fsz := int32(0.02 * windowWidth)
+		text_x := (int32(windowWidth) - rl.MeasureText(text, fsz))/2
+		text_y := int32(0.05 * windowHeight)
 
-		lwd := 0.004 * window_height
-		inner_margin_x := 0.016 * window_width
-		inner_margin_y := 0.016 * window_height
-		off_x := 2 * margin_x - 2 * inner_margin_x
-		off_y := 2 * margin_y - 2 * inner_margin_y
+		lwd := 0.004 * windowHeight
+		innerMarginX := 0.016 * windowWidth
+		innerMarginY := 0.016 * windowHeight
+		off_x := 2 * marginX - 2 * innerMarginX
+		off_y := 2 * marginY - 2 * innerMarginY
 
-		rec := rl.NewRectangle(start.X - inner_margin_x, start.Y - inner_margin_y, window_width - off_x, window_height - off_y)
+		rec := rl.NewRectangle(start.X - innerMarginX, start.Y - innerMarginY, windowWidth - off_x, windowHeight - off_y)
 		rl.DrawRectangleLinesEx(rec, 0.75 * lwd, rl.Gray)
 
 		rl.DrawText(text, text_x, text_y, fsz, rl.Black);
